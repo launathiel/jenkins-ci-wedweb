@@ -14,6 +14,12 @@ node {
         checkout scm
     }
 
+    stage('Configure ENV'){
+        sh "chmod +x env.sh"
+        sh "./env.sh"
+        echo "env variable has been created!"
+    }
+
 
 
     // stage("Image Prune"){
