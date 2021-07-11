@@ -5,23 +5,24 @@ def HTTP_PORT="80"
 
 node {
 
-    stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+    // stage('Initialize'){
+    //     def dockerHome = tool 'myDocker'
+    //     env.PATH = "${dockerHome}/bin:${env.PATH}"
+    // }
 
     stage('Checkout') {
         checkout scm
     }
 
 
-    stage("Image Prune"){
-        imagePrune(CONTAINER_NAME)
-    }
 
-    // stage('Image Build'){
-    //     imageBuild()
+    // stage("Image Prune"){
+    //     imagePrune(CONTAINER_NAME)
     // }
+
+    stage('Image Build'){
+        imageBuild()
+    }
 
     // stage('Push to Docker Registry'){
     //     withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -56,6 +57,6 @@ def imageBuild(){
 // }
 
 def runApp(){
-    sh "docker run --name kontenerkun -d -p 8080:80 nginx:latest"
+    sh "docker-compose up -d"
     echo "Application started!"
 }
