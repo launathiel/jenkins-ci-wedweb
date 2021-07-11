@@ -40,9 +40,9 @@ node {
     //     }
     // }
 
-    stage('Run App'){
-        runApp()
-    }
+    // stage('Run App'){
+    //     runApp()
+    // }
 
 }
 
@@ -55,7 +55,7 @@ def imagePrune(containerName){
 
 def imageBuild(){
     // sh "docker build -t $containerName:$tag  -t $containerName --pull --no-cache ."
-    sh "docker-compose build"
+    sh "docker run hello-world"
     echo "Image build complete"
 }
 
