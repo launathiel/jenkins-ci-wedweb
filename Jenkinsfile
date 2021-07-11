@@ -56,6 +56,6 @@ def imageBuild(){
 // }
 
 def runApp(){
-    sh "docker run --name some-nginx -d -p 8080:80 some-content-nginx"
+    sh "docker run --name kontenerkun -d -p 8080:80 nginx:latest"
     echo "Application started!"
 }
