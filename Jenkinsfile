@@ -14,25 +14,14 @@ node {
         checkout scm
     }
 
-    // stage('Build'){
-    //     sh "mvn clean install"
-    // }
-
-    // stage('Sonar'){
-    //     try {
-    //         sh "mvn sonar:sonar"
-    //     } catch(error){
-    //         echo "The sonar server could not be reached ${error}"
-    //     }
-    //  }
 
     stage("Image Prune"){
         imagePrune(CONTAINER_NAME)
     }
 
-    stage('Image Build'){
-        imageBuild()
-    }
+    // stage('Image Build'){
+    //     imageBuild()
+    // }
 
     // stage('Push to Docker Registry'){
     //     withCredentials([usernamePassword(credentialsId: 'dockerHubAccount', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -40,9 +29,9 @@ node {
     //     }
     // }
 
-    // stage('Run App'){
-    //     runApp()
-    // }
+    stage('Run App'){
+        runApp()
+    }
 
 }
 
@@ -55,7 +44,7 @@ def imagePrune(containerName){
 
 def imageBuild(){
     // sh "docker build -t $containerName:$tag  -t $containerName --pull --no-cache ."
-    sh "docker run hello-world"
+    sh "docker-compose build"
     echo "Image build complete"
 }
 
@@ -67,6 +56,6 @@ def imageBuild(){
 // }
 
 def runApp(){
-    sh "docker-compose up -d"
+    sh "docker run --name some-nginx -d -p 8080:80 some-content-nginx"
     echo "Application started!"
 }
