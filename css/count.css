@@ -1,0 +1,54 @@
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 20vh;
+}
+
+.content .countdown {
+  color: #343830;
+  font-weight: 400;
+  padding-bottom: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.countdown
+{
+  display: flex;
+  
+}
+
+.cd , .ch , .cm , .cs
+{
+ 
+  background-color: #f7cfc4;
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+.countdown .ket
+{
+  font-size: 15px;
+  margin-top: -30px;
+
+}
+
+.countdown p
+{
+  font-size: 50px;
+}
+
+@media(max-width:670px)
+{
+  
+  .countdown p
+  {
+    font-size: 35px;
+  }
+
+
+}
+
