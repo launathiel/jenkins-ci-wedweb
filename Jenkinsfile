@@ -22,9 +22,9 @@ node {
 
 
 
-    // stage("Image Prune"){
-    //     imagePrune(CONTAINER_NAME)
-    // }
+    stage("Image Prune"){
+        imagePrune()
+    }
 
     stage('Image Build'){
         imageBuild()
@@ -45,7 +45,8 @@ node {
 def imagePrune(containerName){
     try {
         sh "docker image prune -f"
-        sh "docker stop $containerName"
+        sh "docker-compose stop"
+        sh "docker-compose rm -f"
     } catch(error){}
 }
 
